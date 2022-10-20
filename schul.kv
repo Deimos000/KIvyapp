@@ -1,0 +1,67 @@
+
+<WindowManager>:
+    MainWindow:
+    MatheWindow:
+
+<MatheWindow>:
+    name: "main"
+    GridLayout:
+        size: root.width, root.height
+        cols: 1
+        GridLayout:
+            cols:2
+            
+            Label:
+                id: ds 
+                text:"10"
+                color: 1, 0, 0, 1
+                font_size: 100 
+
+            Label:
+                text:"irgentwann ein graph"
+                color: 0, 0, 1, 1
+                
+        ScrollView:
+            size_hint_y: 1
+            pos_hint: {'x':self, 'y':self}
+            do_scroll_x: False
+            do_scroll_y: True 
+            GridLayout:           
+                cols:4
+                padding:30
+                spacing:20
+                size_hint_x:None
+                size_hint_y:None
+                size:(root.width, root.height /4*3 )
+
+
+                Button:
+                    text:"fah"
+                    on_press:
+                        app.root.current="mathe"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+<MatheWindow>
+    name: "mathe"
+    Button:
+        text:"kek"

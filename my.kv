@@ -1,0 +1,247 @@
+#: import Factory kivy.factory.Factory
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+
+<Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: 0.6, 0,0.9, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<MyDropDown@DropDown>:
+    size_hint_y: 0.2
+    color: 1,0,0,1
+    canvas.before:
+        Color:
+            rgba: 0.6, 0,0.9, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+
+<sp@SpinnerOption>:
+    color: 1,1,1,1
+    background_color: 0.6, 0,1, 1
+    canvas.before:
+        Color:
+            rgba: 0.6, 0.9,0.9, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<MainWindow>:
+    ds:ds
+    name: "main"
+    mathe:mathe
+    physik:physik
+
+    GridLayout:
+        size: root.width, root.height
+        cols: 1
+        GridLayout:
+            cols:2
+            Label:
+                id: ds 
+                text: "10" 
+                color: 1, 0, 0, 1
+                font_size: 100 
+                
+
+            BoxLayout:
+                id: Graph
+                size_hint_x: 1.2
+                pos_hint:{"right": 0.92, "top": 0.92} 
+                padding: 20 
+
+
+        ScrollView:
+            size_hint_y: 1
+            pos_hint: {'x':self, 'y':self}
+            do_scroll_x: False
+            do_scroll_y: True 
+            GridLayout:           
+                cols:4
+                padding:30
+                spacing:20
+                size_hint_x:None
+                size_hint_y:None
+                size:(root.width, root.height /4*3 )
+
+
+                Button:
+                    text:"Mathe"
+                    id: mathe
+                    on_press:
+                        root.Mathe()
+                        app.root.current="mathe"
+                        root.manager.transition.direction = 'left'
+                        root.btn()
+                        root.Fachdurchschnitt()
+                Button:
+                    text:"Physik"
+                    id: physik
+                    on_press:
+                        root.Physik()
+                        app.root.current="mathe"
+                        root.manager.transition.direction = 'left'
+                        root.btn()
+                        root.Fachdurchschnitt()
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+                Button:
+                    text:"fach"
+<SecondWindow>:
+    name: "mathe"
+    durchschnittfach: durchschnittfach
+    fach:fach
+    fachverlauf:fachverlauf
+    auswahlNote:auswahlNote
+    GridLayout:
+        cols:1
+        size_hint: 1,1
+        FloatLayout:
+            id: mathe
+            Label:
+            	text: "Punkte"
+                pos_hint: {"right":0.23, "top":0.73}
+                size_hint: 0.2,0.1
+                color: 1, 1, 1, 1
+                font_size: 17
+                canvas.before:
+                    Color:
+                        rgba: 0.6, 0,0.9, 1  # darkmode
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [15]                 
+            Button:
+                text:"Mathe"
+                id: fach
+                pos_hint: {"right":0.65, "top":0.9}
+                size_hint: 0.3,0.1
+                font_size: 17
+                on_press:
+                    root.mathe()
+                    root.clear()
+                    root.call()
+                    root.Allgemein()
+                    root.callFachdurchschnitt()
+            Label:
+                id:fachverlauff
+                font_size:17
+                color: 1, 1, 1, 1
+                text: ""
+                pos_hint: {"right":0.23, "top":0.66}
+                size_hint: 0.2,0.25
+                text_size: self.size
+                valign: "top"
+                canvas.before:
+                    Color:
+                        rgba: 0.6, 0,0.9, 1  
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            Label:
+                id:fachverlauf
+                font_size:17
+                canvas.before:
+                    Color:
+                        rgba: 0.6, 0,0.9, 1  
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [15]
+                color: 1, 1, 1, 1
+                text: "Verlauf: \n  "
+                pos_hint: {"right":0.23, "top":0.45}
+                size_hint: 0.2,0.4
+                text_size: self.size
+                valign: "top"
+            Button:
+                text: "DELETE"
+                id: delete 
+                on_press:
+                    root.delete()
+                pos_hint: {"right":0.23, "top":0.95}   
+                size_hint_x: 0.2
+                size_hint_y: 0.1   
+            TextInput:
+                multiline: False
+                input_type: 'number'               
+                pos_hint: {"right":0.23, "top":0.65}
+                size_hint: 0.2,0.09
+                color: 1, 1, 0, 1
+                id: durchschnittfach
+                background_color: 0.11,0.11,0.12,1
+                foreground_color: 1,1,1,1
+                font_size:17
+            Button:
+                text:"Back"
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = 'right'
+                pos_hint: {"right":0.99, "top":0.99}
+                size_hint: 0.2,0.1
+                font_size:17
+                on_press:
+                    root.clear()
+                    root.createmaingraph()
+                    root.calldurchschnitt()
+                
+            BoxLayout:
+                id: box 
+                size_hint: 0.7,0.6
+                pos_hint: {"right":0.95, "top":0.69}
+                texture_size: 1.5
+            Spinner:   
+                max_height: 0.4   
+                dropdown_cls: 'MyDropDown'       
+                pos_hint: {"right":0.23, "top":0.55}
+                size_hint: 0.2,0.09
+                id: auswahlNote
+                background_color: 0.11,0.11,0.12,1
+                foreground_color: 1,1,1,1
+                font_size:17
+                text: "Test"
+                height: 0.5
+                values: ["Test", "Klassenarbeit", "Mitarbeit", "Sonstiges", "text","test","test","test"]
+                on_text: root.ArtNoten()
+                option_cls: "sp"
+
+                
+
+
+
+                
+
+
+
+
+            
+
+        

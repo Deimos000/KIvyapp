@@ -381,7 +381,7 @@ class MyMainApp(App):
 
     def on_start(self, **kwargs):
         mw = MainWindow()
-        mw.Allgemeinepunkte()
+        #mw.Allgemeinepunkte()     Uncomment this line if you want to test whats wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 if __name__ == "__main__":
